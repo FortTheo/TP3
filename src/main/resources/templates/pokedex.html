@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pokedex</title>
+</head>
+<body>
+<form th:action="@{/pokedex/recherche}" method="get">
+    <h4> Recherche un pokemon par son Numero</h4>
+    Numero Du Pokedex : <input th:name="numero" type="number" value="1">
+    <button type="submit">Rechercher</button>
+    <br><br>
+</form>
+
+<form th:action="@{/pokedex/capacite}" method="get">
+    <h4> Recherche les pokemons avec cette capactite</h4>
+    idCapacite : <input th:name="idCapacite" type="number" value="1">
+    <button type="submit">Rechercher par capacite</button>
+    <br><br>
+</form>
+
+<h1>Liste des Pokémons</h1>
+<ul>
+    <li th:each="p : ${Pokemon}">
+        <strong th:text="${p.id}"></strong> -
+        <span th:text="${p.name}"></span> (Poids: <span th:text="${p.poids}"></span>)
+
+        <ul>
+            <li th:each="c : ${p.capacites}">
+                <span th:text="${c.id}"></span>
+                <span th:text="${c.libelle}"></span></li>
+        </ul>
+        <a th:href="@{/pokedex/supprimer/{id}(id=${p.id})}">Supprimer</a>
+    </li>
+</ul>
+
+<a href="/pokedex/ajouterPokemon">Ajouter un nouveau Pokemon</a>
+</body>
+</html>

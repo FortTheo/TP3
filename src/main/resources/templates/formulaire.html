@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ajoutPokemon</title>
+</head>
+<body>
+<!--/*@thymesVar id="Pokemon" type="main.tp2.model.Pokemon"*/-->
+<form th:action="@{ajouterPokemon}" th:object="${Pokemon}" method="post">
+    Nom: <input type="text" th:field="*{name}">
+    Poids: <input text="poids" th:field="*{poids}">
+    <button type="submit">Soumettre</button>
+</form>
+</body>
+</html>
